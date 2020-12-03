@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-// All in mm
+// All dimensions are in mm
 const float WHEEL_DIAMETER = 70;
 const float WHEEL_RADIUS = 35;
 const float WHEEL_CIRCUMFERENCE = M_PI * WHEEL_DIAMETER;
@@ -11,9 +11,6 @@ const float WHEEL_CIRCUMFERENCE = M_PI * WHEEL_DIAMETER;
 
 const float WHEEL_SEPARATION = 143.5;
 
-
-//const float GEAR_RATIO        = ??;
-//const float COUNTS_PER_SHAFT_REVOLUTION = ??;
 const float COUNTS_PER_WHEEL_REVOLUTION = 1440;
 const float MM_PER_COUNT = WHEEL_CIRCUMFERENCE/COUNTS_PER_WHEEL_REVOLUTION;
 const float COUNTS_PER_MM = 1/MM_PER_COUNT;
@@ -50,7 +47,7 @@ class Kinematics
 
 // Required constructor.  Initialise variables.
 Kinematics::Kinematics() {
-	x = 0.0;
+  x = 0.0;
   y = 0.0;
   theta = 0.0;
 }
