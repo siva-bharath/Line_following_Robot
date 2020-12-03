@@ -5,7 +5,7 @@ The path of robot contains series of sharp curves and turns designed to test the
 Finally , the mobile robot has to return its original location where it was started. 
 This kind of scenarios were applicable to track an underground subsea cable of unknown length and return to its destination.
 
-![Image of Mobile_Robot]()
+![Image of Mobile_Robot](Images/Mobile_Robot.jpg)
 
 A line sensor was attached to the mobile robot to check for the presence of line. 
 
