@@ -2,28 +2,9 @@
 #define _PID_h
 #include <stdint.h>
 
-/*Here, the definition of the PID class begins. This is indicated by the keyword: "class"
-This is a general description of the data and functions that the class contains. 
-To use a class, we must make a specific instance of the class by declaring it into the same way we declare a variable. 
-For example, to create a version of the PID class, in our main file we might write:
-
-PID LeftWheelPID;
-PID RightWheelPID;
-
-This will create two instances of the PID class; one for the left wheel and one for the right wheel. 
-Each class will have a full copy of all the variables and functions defined for that particular class.
-*/ 
 
 class PID {
-  /* Public functions and variables are defined here. A public function / variable can be accessed from outside 
-   * the class. 
-   * For example, once we have made an instance of the PID class, we can call the update function by writing:
-   * 
-   * LeftWheelPID.update();
-   * 
-   * Note that this will only update the LeftWheelPID - RightWheelPID will not be updated unless we also call 
-   * RightWheelPID.update()
-   */
+  
   public:
 
     PID(float P, float I, float D);                 // This is the class constructor. It is called whenever we create an instance of the PID class 
@@ -35,19 +16,14 @@ class PID {
     void setDebug(bool state);                      // This function sets the debug flag;
     void printResponse();                          // This function prints the ratio of input to output in a way that is nicely interpreted by the Serial plotter
     void setShowResponse(bool state);             // This functions set the show_response flag
-
-  /* Private functions and variables are defined here. These functions / variables cannot be accessed from outside the class.
-   * For example, if we try to set the value of Kp in the file "Romi.h", we will get an error (Try it out!) 
-   * You might want to move some into public space when you are debugging ;)
-   */
+  
   private:
 
-    //Control gains
     float Kp; //Proportional
     float Ki; //Integral
     float Kd; //Derivative
 
-    //We can use this to limit the output to a certain value
+    
     float max_output; 
 
     //Output components
@@ -70,7 +46,6 @@ class PID {
 
 /*
  * Class constructor
- * This runs whenever we create an instance of the class
  */
  PID::PID(float P, float I, float D) {
   //Store the gains
@@ -93,11 +68,7 @@ class PID {
   
 }
 
-/*
- * This function prints the individual contributions to the total contol signal
- * You can call this yourself for debugging purposes, or set the debug flag to true to have it called
- * whenever the update function is called.
- */
+
 void PID::printComponents() {
   Serial.print(Kp_output);
   Serial.print(",");
@@ -109,9 +80,6 @@ void PID::printComponents() {
   Serial.print("\n");
 }
 
-/*
- * This function sets the gains of the PID controller
- */
 void PID::setGains(float P, float I, float D) {
   Kp = P;
   Ki = I;
@@ -120,30 +88,19 @@ void PID::setGains(float P, float I, float D) {
 
 
 float PID::update(float demand, float measurement) {
-  //Calculate how much time (in milliseconds) has passed since the last update call
-  // Watch out for when time_delta might equal 0
+
   long time_now = millis();
   int time_delta = time_now - last_millis;
   last_millis = time_now;
 
-  /*
-   * ================================
-   * Your code goes implementation of a PID controller should go here
-   * ================================
-   */
 
-  //This represents the error term
-  // Decide what your error signal is (demand vs measurement)
+ 
   float error;
   error = demand - measurement;  
   
-  //This represents the error derivative
-  // Calculate the change in your error between update()
+
   float error_delta;
   error_delta = (error - last_error) / time_delta;
-
-  // This represents the error integral.
-  // Integrate error over time.
   integral_error += (error * time_delta);
 
   //Attenuate above error components by gain values.
@@ -151,17 +108,9 @@ float PID::update(float demand, float measurement) {
   Ki_output = Ki * integral_error;
   Kd_output = Kd * error_delta;
 
-  // Add the three components to get the total output
-  // Note: Check the sign of your d gain.  Check that the
-  // Kd_output contribuition is the opposite of any 
-  // overshoot you see using the Serial Plotter
+
   float total = Kp_output + Ki_output + Kd_output;
 
-  /*
-   * ===========================
-   * Code below this point should not need to be changed
-   * But of course, feel free to improve / experiment :)
-   */
 
    
   //Update persistent variables.
