@@ -14,3 +14,5 @@ The task was segenmented into contains four section as shown below
 3.  PID Controller.h : Contains PID tuning Parameters Kp, Kd, Ki responsible for maintaining the given control variable.
 4.  Kinematics.h : : This section implements the kinematics of differential drive mechanism. 
 5.  Line Sensors.h : In this module , a line constructor class was implemented to get the calibrated reading from the line sensor
+
+The Control board utilised for the entire purpose was ATmega32U4 AVR microcontroller from Microchip (formerly Atmel).
