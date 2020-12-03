@@ -26,7 +26,6 @@ ISR( INT6_vect ) {
   boolean newE1_B = digitalRead( E1_B_PIN );
   boolean newE1_A = digitalRead( E1_A_PIN );
 
-  // Some clever electronics combines the
   // signals and this XOR restores the
   // true value.
   newE1_A ^= newE1_B;
@@ -45,25 +44,23 @@ ISR( INT6_vect ) {
   state = state | ( oldE1_B  << 0 );
 
 
-  // This is an inefficient way of determining
-  // the direction.  However it illustrates well
-  // against the lecture slides.
+  
   switch( state ) {
     case 0:                   break; // No movement.
-    case 1:  count_right_e--; break;  // clockwise?
-    case 2:  count_right_e++; break;  // anti-clockwise?
+    case 1:  count_right_e--; break;  // clockwise
+    case 2:  count_right_e++; break;  // anti-clockwise
     case 3:                   break;  // Invalid
-    case 4:  count_right_e++; break;  // anti-clockwise?
+    case 4:  count_right_e++; break;  // anti-clockwise
     case 5:                   break;  // No movement.
     case 6:                   break;  // Invalid
-    case 7:  count_right_e--; break;  // clockwise?
-    case 8:  count_right_e--; break;  // clockwise?
+    case 7:  count_right_e--; break;  // clockwise
+    case 8:  count_right_e--; break;  // clockwise
     case 9:                   break;  // Invalid
     case 10:                  break;  // No movement.
-    case 11: count_right_e++; break;  // anti-clockwise?
+    case 11: count_right_e++; break;  // anti-clockwise
     case 12:                  break;  // Invalid
-    case 13: count_right_e++; break;  // anti-clockwise?
-    case 14: count_right_e--; break;  // clockwise?
+    case 13: count_right_e++; break;  // anti-clockwise
+    case 14: count_right_e--; break;  // clockwise
     case 15:                  break;  // No movement.
   }
 
@@ -117,20 +114,20 @@ ISR( PCINT0_vect ) {
   // against the lecture slides.  
   switch( state ) {
     case 0:                  break; // No movement.
-    case 1:  count_left_e--; break;  // clockwise?
-    case 2:  count_left_e++; break;  // anti-clockwise?
+    case 1:  count_left_e--; break;  // clockwise
+    case 2:  count_left_e++; break;  // anti-clockwise
     case 3:                  break;  // Invalid
-    case 4:  count_left_e++; break;  // anti-clockwise?
+    case 4:  count_left_e++; break;  // anti-clockwise
     case 5:                  break;  // No movement.
     case 6:                  break;  // Invalid
     case 7:  count_left_e--; break;  // clockwise?
     case 8:  count_left_e--; break;  // clockwise?
     case 9:                  break;  // Invalid
     case 10:                 break;  // No movement.
-    case 11: count_left_e++; break;  // anti-clockwise?
+    case 11: count_left_e++; break;  // anti-clockwise
     case 12:                 break;  // Invalid
-    case 13: count_left_e++; break;  // anti-clockwise?
-    case 14: count_left_e--; break;  // clockwise?
+    case 13: count_left_e++; break;  // anti-clockwise
+    case 14: count_left_e--; break;  // clockwise
     case 15:                 break;  // No movement.
   }
      
