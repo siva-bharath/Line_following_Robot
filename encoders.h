@@ -1,5 +1,4 @@
-// These #defines act like a find-and-replace
-// in your code, and make your code more readable.
+
 
 #define E1_A_PIN  7
 #define E1_B_PIN  23
