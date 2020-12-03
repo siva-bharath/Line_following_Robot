@@ -11,10 +11,16 @@ A line sensor was attached to the mobile robot to check for the presence of line
 
 The task was segenmented into contains four section as shown below
 
-1.  Main Code : This contains the line following program.
-2.  Encoder setup.h : This section was responsible for updating the number of pulses or counts.
-3.  PID Controller.h : Contains PID tuning Parameters Kp, Kd, Ki responsible for maintaining the given control variable.
-4.  Kinematics.h : : This section implements the kinematics of differential drive mechanism. 
+1.  Main Code : This sections contains the line following program.
+2.  Encoder setup.h : In this section, the program was responsible for updating the number of pulses or counts.
+3.  PID Controller.h : Contains the PID implementation of the given robot responsible for maintaining the given control variable.
+4.  Kinematics.h  : This section implements the kinematics of differential drive mechanism and updates to the main loop. 
 5.  Line Sensors.h : In this module , a line constructor class was implemented to get the calibrated reading from the line sensor
 
 The Control board utilised for the entire purpose was ATmega32U4 AVR microcontroller from Microchip (formerly Atmel).
+
+### The following shows the track to follow 
+
+![Track of robot](Images/Track_to_follow.jpg)
+
+
